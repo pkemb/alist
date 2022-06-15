@@ -61,10 +61,11 @@ func (driver Onedrive) GetMetaUrl(account *model.Account, auth bool, path string
 		}
 	case "sharepoint":
 		{
+			// SiteId -> DriverId
 			if path == "/" || path == "\\" {
-				return fmt.Sprintf("%s/v1.0/sites/%s/drive/root", host.Api, account.SiteId)
+				return fmt.Sprintf("%s/v1.0/drives/%s/root", host.Api, account.SiteId)
 			} else {
-				return fmt.Sprintf("%s/v1.0/sites/%s/drive/root:%s:", host.Api, account.SiteId, path)
+				return fmt.Sprintf("%s/v1.0/drives/%s/root:%s:", host.Api, account.SiteId, path)
 			}
 		}
 	default:
